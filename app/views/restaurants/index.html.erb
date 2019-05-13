@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="text-center">Restaurants</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Category</th>
+        <th col-sm6></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.phone_number %></td>
+        <td><%= restaurant.category %></td>
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td>
+          <%= link_to(restaurant_path(restaurant), html_options = {  method: :delete }) do %>
+           <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+    <%= link_to 'New Restaurant', new_restaurant_path %>
+</div>
+
